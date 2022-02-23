@@ -1,4 +1,5 @@
 using BlazorEcommerce.Server.Data;
+using BlazorEcommerce.Server.Services.ProductService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,9 @@ namespace BlazorEcommerce.Server
       services.AddDbContext<DataContext>(options => {
         options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
       });
+
+
+      services.AddScoped<IProductService, ProductService>();
 
       services.AddSwaggerGen(c =>
       {
